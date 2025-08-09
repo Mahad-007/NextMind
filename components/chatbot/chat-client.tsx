@@ -76,41 +76,42 @@ export default function ChatClient({ initialCredits }: { initialCredits: number 
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">ChatBot</h1>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-xs sm:text-sm text-muted-foreground">
           Credits: <span className={credits > 0 ? "text-emerald-400" : "text-red-400"}>{credits}</span>
         </div>
       </div>
 
-      <Card className="bg-card border-foreground/10 shadow-xl">
+      <Card className="bg-card/80 backdrop-blur border-foreground/10 shadow-2xl">
         <CardContent className="p-0">
           <div
             ref={containerRef}
-            className="h-[60vh] overflow-y-auto p-4 flex flex-col gap-3"
+            className="h-[65vh] md:h-[70vh] overflow-y-auto p-3 md:p-4 flex flex-col gap-3"
           >
             {messages.map((m, idx) => (
               <div
                 key={idx}
                 className={
                   m.role === "user"
-                    ? "self-end max-w-[85%] rounded-xl px-4 py-2 bg-primary text-primary-foreground"
-                    : "self-start max-w-[85%] rounded-xl px-4 py-2 bg-muted text-foreground"
+                    ? "self-end max-w-[85%] rounded-2xl px-4 py-2 bg-primary text-primary-foreground shadow"
+                    : "self-start max-w-[85%] rounded-2xl px-4 py-2 bg-secondary text-foreground border border-foreground/10"
                 }
               >
                 {m.content}
               </div>
             ))}
           </div>
-          <div className="border-t border-foreground/10 p-3 flex gap-2">
+          <div className="border-t border-foreground/10 p-2 md:p-3 flex gap-2">
             <Input
               placeholder={credits > 0 ? "Type your message..." : "Out of credits"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onKeyDown}
               disabled={isSending || credits <= 0}
+              className="text-sm md:text-base"
             />
-            <Button onClick={onSend} disabled={!canSend}>
+            <Button onClick={onSend} disabled={!canSend} className="min-w-[84px]">
               {isSending ? "Sending..." : "Send"}
             </Button>
           </div>
