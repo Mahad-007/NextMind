@@ -16,7 +16,7 @@ export default function ChatbotLayout({
         <nav className="sticky top-0 z-40 w-full flex justify-center border-b border-b-foreground/10 h-16 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
             <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/chatbot"} className="text-lg font-bold">ChatBot</Link>
+              <Link href={"/chatbot"} className="text-lg font-bold">NextMind</Link>
               <div className="flex items-center gap-2">
                 <DeployButton />
               </div>
@@ -25,18 +25,8 @@ export default function ChatbotLayout({
           </div>
         </nav>
         <div className="flex-1 flex flex-col gap-6 w-full max-w-5xl p-5 md:p-8">{children}</div>
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-12">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
-          </p>
+        <footer className="w-full flex items-center justify-between border-t mx-auto text-xs gap-8 py-12 px-5 max-w-5xl">
+          <span className="text-muted-foreground">© {new Date().getFullYear()} NextMind</span>
           <ThemeSwitcher />
         </footer>
       </div>

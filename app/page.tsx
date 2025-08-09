@@ -15,7 +15,7 @@ export default function Home() {
         <nav className="sticky top-0 z-40 w-full flex justify-center border-b border-b-foreground/10 h-16 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
             <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/"} className="text-lg font-bold">ChatBot</Link>
+              <Link href={"/"} className="text-lg font-bold">NextMind</Link>
               <div className="flex items-center gap-2">
                 <DeployButton />
               </div>
@@ -23,8 +23,23 @@ export default function Home() {
             {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
           </div>
         </nav>
-        <div className="flex-1 flex flex-col gap-14 w-full max-w-5xl p-5 md:p-8">
+        <div className="flex-1 flex flex-col gap-20 w-full max-w-6xl p-5 md:p-8">
           <Hero />
+          <section id="features" className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="glass rounded-xl p-6 shadow animate-float">
+              <h3 className="text-lg font-semibold mb-1">Realtime chat</h3>
+              <p className="text-sm text-muted-foreground">Responsive, elegant chat UI with credits tracking.</p>
+            </div>
+            <div className="glass rounded-xl p-6 shadow animate-float [animation-delay:300ms]">
+              <h3 className="text-lg font-semibold mb-1">Supabase auth</h3>
+              <p className="text-sm text-muted-foreground">Secure sign in and protected routes out of the box.</p>
+            </div>
+            <div className="glass rounded-xl p-6 shadow animate-float [animation-delay:600ms]">
+              <h3 className="text-lg font-semibold mb-1">Groq-powered</h3>
+              <p className="text-sm text-muted-foreground">Fast, smart conversations leveraging Groq models.</p>
+            </div>
+          </section>
+
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-xl border border-foreground/10 bg-card p-6 shadow">
               <h3 className="text-lg font-semibold mb-2">Get connected</h3>
@@ -41,18 +56,8 @@ export default function Home() {
           </section>
         </div>
 
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-12">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
-          </p>
+        <footer className="w-full flex items-center justify-between border-t mx-auto text-xs gap-8 py-12 px-5 max-w-6xl">
+          <span className="text-muted-foreground">© {new Date().getFullYear()} NextMind</span>
           <ThemeSwitcher />
         </footer>
       </div>
